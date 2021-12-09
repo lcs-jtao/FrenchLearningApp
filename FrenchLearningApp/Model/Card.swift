@@ -17,14 +17,14 @@ let listOfWords = [
     Card(frenchPhrase: "Bonjour!",
          englishTranslation: "Hello!")
     ,
-    Card(frenchPhrase: "Je m'appelle...",
-         englishTranslation: "My name is...")
+    Card(frenchPhrase: "Je m'appelle Joyce",
+         englishTranslation: "My name is Joyce")
     ,
     Card(frenchPhrase: "Comment ça va?",
          englishTranslation: "How are you?")
     ,
-    Card(frenchPhrase: "Ça va bien, toi?",
-         englishTranslation: "I'm good, how about you?")
+    Card(frenchPhrase: "Merci!",
+         englishTranslation: "Thank you!")
     ,
     Card(frenchPhrase: "Au revoir!",
          englishTranslation: "Goodbye!")
