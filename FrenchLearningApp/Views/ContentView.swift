@@ -11,6 +11,9 @@ struct ContentView: View {
     @State var currentPhrase: Card = listOfWords.randomElement()!
     @State var inputTranslation: String = ""
     @State var isAnswerShowing = false
+    @State var isCheckButtonShowing = true
+    @State var numberOfPhrasesShown: Int = 1
+    @State var numberOfCorrectAnswers: Int = 0
     var body: some View {
         VStack(spacing: 25) {
             
@@ -25,6 +28,8 @@ struct ContentView: View {
                 withAnimation {
                     if inputTranslation == currentPhrase.englishTranslation {
                         isAnswerShowing = true
+                        isCheckButtonShowing = false
+                        numberOfCorrectAnswers += 1
                     }
                 }
             },
@@ -32,23 +37,28 @@ struct ContentView: View {
                 Text("Check")
             })
                 .buttonStyle(.bordered)
+                .opacity(isCheckButtonShowing ? 1.0 : 0.0)
             
             // Output
             Text(currentPhrase.englishTranslation)
                 .font(.title)
                 .opacity(isAnswerShowing ? 1.0 : 0.0)
-            
             // Input
             Button(action: {
                 isAnswerShowing = false
+                isCheckButtonShowing = true
                 currentPhrase = listOfWords.randomElement()!
                 inputTranslation = ""
+                numberOfPhrasesShown += 1
             },
                    label: {
                 Text("Another")
             })
                 .buttonStyle(.bordered)
                 .opacity(isAnswerShowing ? 1.0 : 0.0)
+            
+            // Output
+            Text("\(numberOfCorrectAnswers)/\(numberOfPhrasesShown)")
             Spacer()
         }
         .padding()
