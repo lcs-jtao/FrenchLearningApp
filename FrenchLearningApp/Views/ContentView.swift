@@ -58,7 +58,7 @@ struct ContentView: View {
                 .opacity(isAnswerShowing ? 1.0 : 0.0)
             
             // Output
-            Text("\(numberOfCorrectAnswers)/\(numberOfPhrasesShown)")
+            Text("\(numberOfCorrectAnswers) correct out of \(numberOfPhrasesShown) question(s)")
             Spacer()
         }
         .padding()
