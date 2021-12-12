@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var isCheckButtonShowing = true
     @State var numberOfPhrasesShown: Int = 1
     @State var numberOfCorrectAnswers: Int = 0
+    @State var numberOfWrongAnswers: Int = 0
     var body: some View {
         VStack(spacing: 25) {
             
@@ -29,7 +30,11 @@ struct ContentView: View {
                     if inputTranslation == currentPhrase.englishTranslation {
                         isAnswerShowing = true
                         isCheckButtonShowing = false
-                        numberOfCorrectAnswers += 1
+                        if numberOfWrongAnswers == 0 {
+                            numberOfCorrectAnswers += 1
+                        }
+                    } else {
+                        numberOfWrongAnswers += 1
                     }
                 }
             },
@@ -50,6 +55,7 @@ struct ContentView: View {
                 currentPhrase = listOfWords.randomElement()!
                 inputTranslation = ""
                 numberOfPhrasesShown += 1
+                numberOfWrongAnswers = 0
             },
                    label: {
                 Text("Another")
